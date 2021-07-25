@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Ubuntu상에서의 MSYS2 | Less is More</title>
+    <meta name="description" content="For my poor memory">
+    <link rel="stylesheet" href="/assets/style.3d4e16a3.css">
+    <link rel="modulepreload" href="/assets/Home.ebd3928e.js">
+    <link rel="modulepreload" href="/assets/app.b2aa9d0b.js">
+    <link rel="modulepreload" href="/assets/ko_win_bridge_server_msys2.md.630205b4.lean.js">
+    <link rel="modulepreload" href="/assets/app.b2aa9d0b.js">
+    <meta name="twitter:title" content="Ubuntu상에서의 MSYS2 | Less is More">
+    <meta property="og:title" content="Ubuntu상에서의 MSYS2 | Less is More">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme"><header class="nav-bar" data-v-5df6160f><div class="sidebar-button" data-v-5df6160f><svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class></path></svg></div><a class="nav-bar-title" href="/" aria-label="Less is More, back to home" data-v-5df6160f data-v-8dbfef3c><!----> Less is More</a><div class="flex-grow" data-v-5df6160f></div><div class="nav" data-v-5df6160f><nav class="nav-links" data-v-5df6160f data-v-38e3b123><!--[--><!--]--><div class="item" data-v-38e3b123><div class="nav-dropdown-link" data-v-38e3b123 data-v-6bbf01f6><button class="button" data-v-6bbf01f6><span class="button-text" data-v-6bbf01f6>다른 언어</span><span class="right button-arrow" data-v-6bbf01f6></span></button><ul class="dialog" data-v-6bbf01f6><!--[--><li class="dialog-item" data-v-6bbf01f6><div class="nav-dropdown-link-item" data-v-6bbf01f6 data-v-d552fd76><a class="item" href="/win_bridge_server/msys2.html" data-v-d552fd76><span class="arrow" data-v-d552fd76></span><span class="text" data-v-d552fd76>English</span><span class="icon" data-v-d552fd76><!----></span></a></div></li><li class="dialog-item" data-v-6bbf01f6><div class="nav-dropdown-link-item" data-v-6bbf01f6 data-v-d552fd76><a class="item active" href="/ko/win_bridge_server/msys2.html" data-v-d552fd76><span class="arrow" data-v-d552fd76></span><span class="text" data-v-d552fd76>한국어</span><span class="icon" data-v-d552fd76><!----></span></a></div></li><li class="dialog-item" data-v-6bbf01f6><div class="nav-dropdown-link-item" data-v-6bbf01f6 data-v-d552fd76><a class="item" href="/ja/win_bridge_server/msys2.html" data-v-d552fd76><span class="arrow" data-v-d552fd76></span><span class="text" data-v-d552fd76>日本語</span><span class="icon" data-v-d552fd76><!----></span></a></div></li><!--]--></ul></div></div><!----></nav></div><!--[--><!--]--></header><aside class="sidebar" data-v-58e261f2><nav class="nav-links nav" data-v-58e261f2 data-v-38e3b123><!--[--><!--]--><div class="item" data-v-38e3b123><div class="nav-dropdown-link" data-v-38e3b123 data-v-6bbf01f6><button class="button" data-v-6bbf01f6><span class="button-text" data-v-6bbf01f6>다른 언어</span><span class="right button-arrow" data-v-6bbf01f6></span></button><ul class="dialog" data-v-6bbf01f6><!--[--><li class="dialog-item" data-v-6bbf01f6><div class="nav-dropdown-link-item" data-v-6bbf01f6 data-v-d552fd76><a class="item" href="/win_bridge_server/msys2.html" data-v-d552fd76><span class="arrow" data-v-d552fd76></span><span class="text" data-v-d552fd76>English</span><span class="icon" data-v-d552fd76><!----></span></a></div></li><li class="dialog-item" data-v-6bbf01f6><div class="nav-dropdown-link-item" data-v-6bbf01f6 data-v-d552fd76><a class="item active" href="/ko/win_bridge_server/msys2.html" data-v-d552fd76><span class="arrow" data-v-d552fd76></span><span class="text" data-v-d552fd76>한국어</span><span class="icon" data-v-d552fd76><!----></span></a></div></li><li class="dialog-item" data-v-6bbf01f6><div class="nav-dropdown-link-item" data-v-6bbf01f6 data-v-d552fd76><a class="item" href="/ja/win_bridge_server/msys2.html" data-v-d552fd76><span class="arrow" data-v-d552fd76></span><span class="text" data-v-d552fd76>日本語</span><span class="icon" data-v-d552fd76><!----></span></a></div></li><!--]--></ul></div></div><!----></nav><!--[--><!--]--><ul class="sidebar-links" data-v-58e261f2><!--[--><li class="sidebar-link"><a class="sidebar-link-item" href="#wine-설치">Wine 설치</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#msys2를-wine에-바로-설치">MSYS2를 Wine에 바로 설치</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#가능한-해결-방법">가능한 해결 방법</a><ul class="sidebar-links"><li class="sidebar-link"><a class="sidebar-link-item" href="#msys2-chroot-jail">MSYS2 Chroot Jail</a><!----></li></ul></li><!--]--></ul><!--[--><!--]--></aside><!-- TODO: make this button accessible --><div class="sidebar-mask"></div><main class="page" data-v-d36a7fda><div class="container" data-v-d36a7fda><!--[--><!--]--><div class="content" data-v-d36a7fda><div data-v-d36a7fda><h1 id="ubuntu상에서의-msys2"><a class="header-anchor" href="#ubuntu상에서의-msys2" aria-hidden="true">#</a> Ubuntu상에서의 MSYS2</h1><h2 id="wine-설치"><a class="header-anchor" href="#wine-설치" aria-hidden="true">#</a> <a href="./wine.html">Wine 설치</a></h2><h2 id="msys2를-wine에-바로-설치"><a class="header-anchor" href="#msys2를-wine에-바로-설치" aria-hidden="true">#</a> <a href="https://www.msys2.org/" target="_blank" rel="noopener noreferrer">MSYS2</a>를 Wine에 바로 설치</h2><ul><li><a href="https://github.com/msys2/MSYS2-packages/issues/682" target="_blank" rel="noopener noreferrer">동작 불가</a></li><li><code>$ wget https://repo.msys2.org/distrib/x86_64/msys2-x86_64-20210604.exe</code> (98 MB)</li><li><code>$ wine64 msys2-x86_64-20210604.exe</code></li></ul><div class="language-"><pre><code>yoo@yoo-ubuntu:~/download$ wine64 msys2-x86_64-20210604.exe 
+0024:err:winediag:SECUR32_initNTLMSP ntlm_auth was not found or is outdated. Make sure that ntlm_auth &gt;= 3.0.25 is in your path. Usually, you can find it in the winbind package of your distribution.
+0024:fixme:console:GetConsoleProcessList (000000000031FC90,2): stub
+0024:fixme:win:RegisterPowerSettingNotification (0000000000020058,{02731015-4510-4526-99e6-e5a17ebd1aea},0): stub
+0024:fixme:nls:get_dummy_preferred_ui_language (0x8 000000000031F7C8 000000000031F7F0 000000000031F7CC) returning a dummy value (current locale)
+0024:fixme:nls:get_dummy_preferred_ui_language (0x8 000000000031F7C8 000000000031F7F0 000000000031F7CC) returning a dummy value (current locale)
+libGL error: No matching fbConfigs or visuals found
+libGL error: failed to load driver: swrast
+X Error of failed request:  GLXBadContext
+  Major opcode of failed request:  148 (GLX)
+  Minor opcode of failed request:  6 (X_GLXIsDirect)
+  Serial number of failed request:  346
+  Current serial number in output stream:  345
+yoo@yoo-ubuntu:~/download$ 0094:err:rpc:I_RpcReceive we got fault packet with status 0x1c010003
+</code></pre></div><ul><li><p><a href="https://askubuntu.com/questions/1090094/wine-missing-ntlm-auth-3-0-25" target="_blank" rel="noopener noreferrer">Wine missing ntlm_auth</a></p></li><li><p><code>$ sudo apt-get install winbind</code> (54.5 MB)</p></li><li><p><a href="https://github.com/openai/gym/issues/509" target="_blank" rel="noopener noreferrer">libGL error: failed to load driver: swrast</a></p></li><li><p><code>$ sudo apt-get install mesa-utils</code> (150 kB)</p></li><li><p><code>$ sudo apt-get install libgl1-mesa-glx</code> (69.6 kB)</p></li><li><p><a href="https://forums.fedoraforum.org/showthread.php?321633-Fedora-29-libGL-error" target="_blank" rel="noopener noreferrer">FIX Cygwin X for OpenGL</a></p><ul><li><code>C:\cygwin64\bin\run.exe --quote /usr/bin/bash.exe -l -c &quot;cd; exec /usr/bin/startxwin -- +iglx -nowgl&quot;</code></li><li><code>$ glxglears</code></li></ul></li></ul><div class="language-"><pre><code>yoo@yoo-ubuntu:~/download$ wine64 msys2-x86_64-20210604.exe 
+0024:fixme:console:GetConsoleProcessList (000000000031FC90,2): stub
+0024:fixme:win:RegisterPowerSettingNotification (0000000000030040,{02731015-4510-4526-99e6-e5a17ebd1aea},0): stub
+0024:fixme:nls:get_dummy_preferred_ui_language (0x8 000000000031F7C8 000000000031F7F0 000000000031F7CC) returning a dummy value (current locale)
+0024:fixme:nls:get_dummy_preferred_ui_language (0x8 000000000031F7C8 000000000031F7F0 000000000031F7CC) returning a dummy value (current locale)
+0024:fixme:d3d:wined3d_guess_card No card selector available for card vendor 0000 (using GL_RENDERER &quot;llvmpipe (LLVM 11.0.0, 256 bits)&quot;).
+0024:fixme:ntdll:NtQuerySystemInformation info_class SYSTEM_PERFORMANCE_INFORMATION
+0024:fixme:uxtheme:SetWindowThemeAttribute (0000000000020068,1,000000000031F5B8,8): stub
+Xlib:  extension &quot;MIT-SHM&quot; missing on display &quot;localhost:10.0&quot;.
+0024:fixme:explorerframe:taskbar_list_SetProgressValue iface 000000000004B7C0, hwnd 0000000000020068, ullCompleted 64, ullTotal 64 stub!
+0024:fixme:explorerframe:taskbar_list_SetProgressState iface 000000000004B7C0, hwnd 0000000000020068, flags 0 stub!
+0024:fixme:explorerframe:taskbar_list_SetOverlayIcon iface 000000000004B7C0, hwnd 0000000000020068, hIcon 0000000000000000, pszDescription (null) stub!
+0024:fixme:nls:get_dummy_preferred_ui_language (0x8 000000000031B0C8 000000000031B0F0 000000000031B0CC) returning a dummy value (current locale)
+0024:fixme:nls:get_dummy_preferred_ui_language (0x8 000000000031B0C8 000000000031B0F0 000000000031B0CC) returning a dummy value (current locale)
+0024:fixme:explorerframe:taskbar_list_SetOverlayIcon iface 000000000004CFA0, hwnd 0000000000020068, hIcon 0000000000000000, pszDescription (null) stub!
+0118:err:ole:com_get_class_object apartment not initialised
+0118:err:ole:com_get_class_object apartment not initialised
+0118:err:ole:com_get_class_object apartment not initialised
+0118:err:ole:com_get_class_object apartment not initialised
+016c:fixme:ntdll:NtSetInformationToken unimplemented class 4
+016c:fixme:process:NtQueryInformationProcess (process=0xffffffffffffffff) Unimplemented information class: ProcessSessionInformation
+013c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\16x16\\apps\\C8FA_msys64\\mingw64.0.png&quot;
+013c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\32x32\\apps\\C8FA_msys64\\mingw64.0.png&quot;
+0134:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\16x16\\apps\\9D72_msys64\\mingw32.0.png&quot;
+013c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\48x48\\apps\\C8FA_msys64\\mingw64.0.png&quot;
+0134:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\32x32\\apps\\9D72_msys64\\mingw32.0.png&quot;
+013c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\64x64\\apps\\C8FA_msys64\\mingw64.0.png&quot;
+012c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\16x16\\apps\\9D72_msys64\\mingw32.0.png&quot;
+0134:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\48x48\\apps\\9D72_msys64\\mingw32.0.png&quot;
+013c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\96x96\\apps\\C8FA_msys64\\mingw64.0.png&quot;
+012c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\32x32\\apps\\9D72_msys64\\mingw32.0.png&quot;
+0134:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\64x64\\apps\\9D72_msys64\\mingw32.0.png&quot;
+0144:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\16x16\\apps\\C8FA_msys64\\mingw64.0.png&quot;
+013c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\256x256\\apps\\C8FA_msys64\\mingw64.0.png&quot;
+012c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\48x48\\apps\\9D72_msys64\\mingw32.0.png&quot;
+0134:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\96x96\\apps\\9D72_msys64\\mingw32.0.png&quot;
+0144:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\32x32\\apps\\C8FA_msys64\\mingw64.0.png&quot;
+012c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\64x64\\apps\\9D72_msys64\\mingw32.0.png&quot;
+0134:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\256x256\\apps\\9D72_msys64\\mingw32.0.png&quot;
+0144:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\48x48\\apps\\C8FA_msys64\\mingw64.0.png&quot;
+016c:fixme:advapi:LsaOpenPolicy ((null),000000018031B520,0x00000001,00000000FFFFC2A8) stub
+016c:fixme:security:GetWindowsAccountDomainSid (00000000FFFFC290 000000000001DA38 00000000FFFFC28C): semi-stub
+016c:fixme:advapi:LsaClose (000000000000CAFE) stub
+012c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\96x96\\apps\\9D72_msys64\\mingw32.0.png&quot;
+0144:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\64x64\\apps\\C8FA_msys64\\mingw64.0.png&quot;
+012c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\256x256\\apps\\9D72_msys64\\mingw32.0.png&quot;
+0144:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\96x96\\apps\\C8FA_msys64\\mingw64.0.png&quot;
+016c:fixme:netapi32:DsEnumerateDomainTrustsW ((null), 0x0023, 0xffffc348, 0xffffc334): stub
+0144:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\256x256\\apps\\C8FA_msys64\\mingw64.0.png&quot;
+014c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\16x16\\apps\\7A6F_msys64\\ucrt64.0.png&quot;
+014c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\32x32\\apps\\7A6F_msys64\\ucrt64.0.png&quot;
+014c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\48x48\\apps\\7A6F_msys64\\ucrt64.0.png&quot;
+014c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\64x64\\apps\\7A6F_msys64\\ucrt64.0.png&quot;
+014c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\96x96\\apps\\7A6F_msys64\\ucrt64.0.png&quot;
+014c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\256x256\\apps\\7A6F_msys64\\ucrt64.0.png&quot;
+0154:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\16x16\\apps\\7A6F_msys64\\ucrt64.0.png&quot;
+0154:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\32x32\\apps\\7A6F_msys64\\ucrt64.0.png&quot;
+0154:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\48x48\\apps\\7A6F_msys64\\ucrt64.0.png&quot;
+0154:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\64x64\\apps\\7A6F_msys64\\ucrt64.0.png&quot;
+0154:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\96x96\\apps\\7A6F_msys64\\ucrt64.0.png&quot;
+0154:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\256x256\\apps\\7A6F_msys64\\ucrt64.0.png&quot;
+015c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\16x16\\apps\\039C_msys64\\msys2.0.png&quot;
+015c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\32x32\\apps\\039C_msys64\\msys2.0.png&quot;
+015c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\48x48\\apps\\039C_msys64\\msys2.0.png&quot;
+015c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\64x64\\apps\\039C_msys64\\msys2.0.png&quot;
+015c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\96x96\\apps\\039C_msys64\\msys2.0.png&quot;
+0164:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\16x16\\apps\\039C_msys64\\msys2.0.png&quot;
+015c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\256x256\\apps\\039C_msys64\\msys2.0.png&quot;
+0164:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\32x32\\apps\\039C_msys64\\msys2.0.png&quot;
+0164:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\48x48\\apps\\039C_msys64\\msys2.0.png&quot;
+0164:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\64x64\\apps\\039C_msys64\\msys2.0.png&quot;
+0164:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\96x96\\apps\\039C_msys64\\msys2.0.png&quot;
+0178:fixme:wldap32:ldap_set_optionA Unsupported option: 0x95
+0178:fixme:wldap32:ldap_set_optionA Unsupported option: 0x96
+016c:fixme:netapi32:NetUserGetInfo Only implemented for local computer, but remote serverL&quot;\\\\@&quot; was requested.
+0164:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\256x256\\apps\\039C_msys64\\msys2.0.png&quot;
+016c:fixme:advapi:LsaOpenPolicy ((null),000000018031B520,0x00000800,00000000FFFFC9E8) stub
+016c:fixme:advapi:LsaClose (000000000000CAFE) stub
+016c:fixme:netapi32:NetLocalGroupGetInfo ((null) L&quot;Administrators&quot; 1 0xffffc3d0) semi-stub!
+016c:fixme:netapi32:NetLocalGroupGetInfo ((null) L&quot;Users&quot; 1 0xffffc3d0) semi-stub!
+016c:fixme:file:GetLongPathNameW UNC pathname L&quot;\\\\?\\C:\\msys64\\usr\\bin\\cygwin-console-helper.exe&quot;
+0024:fixme:shell:SHGetStockIconInfo (78, 0x101, 0x31b360) semi-stub
+0024:fixme:shell:SHGetStockIconInfo flags 0x101 not implemented
+0024:fixme:shell:SHGetStockIconInfo (78, 0x100, 0x31b360) semi-stub
+0024:fixme:shell:SHGetStockIconInfo flags 0x100 not implemented
+0024:fixme:shell:SHGetStockIconInfo (78, 0x101, 0x31b240) semi-stub
+0024:fixme:shell:SHGetStockIconInfo flags 0x101 not implemented
+Xlib:  extension &quot;MIT-SHM&quot; missing on display &quot;localhost:10.0&quot;.
+01bc:fixme:wscript:set_host_properties ignored L&quot;nologo&quot; switch
+01b4:fixme:wscript:set_host_properties ignored L&quot;nologo&quot; switch
+01b4:fixme:vbscript:do_icall L&quot;S&quot; not found
+01b4:fixme:wscript:ActiveScriptSite_OnScriptError ()
+01bc:fixme:vbscript:do_icall L&quot;S&quot; not found
+01bc:fixme:wscript:ActiveScriptSite_OnScriptError ()
+0024:fixme:win:UnregisterPowerSettingNotification (00000000DEADBEEF): stub
+yoo@yoo-ubuntu:~/download$ 015c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\16x16\\apps\\039C_msys64\\msys2.0.png&quot;
+012c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\16x16\\apps\\9D72_msys64\\mingw32.0.png&quot;
+0154:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\16x16\\apps\\7A6F_msys64\\ucrt64.0.png&quot;
+0164:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\16x16\\apps\\039C_msys64\\msys2.0.png&quot;
+0134:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\16x16\\apps\\9D72_msys64\\mingw32.0.png&quot;
+013c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\16x16\\apps\\C8FA_msys64\\mingw64.0.png&quot;
+014c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\16x16\\apps\\7A6F_msys64\\ucrt64.0.png&quot;
+0144:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\16x16\\apps\\C8FA_msys64\\mingw64.0.png&quot;
+015c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\32x32\\apps\\039C_msys64\\msys2.0.png&quot;
+012c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\32x32\\apps\\9D72_msys64\\mingw32.0.png&quot;
+0154:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\32x32\\apps\\7A6F_msys64\\ucrt64.0.png&quot;
+0164:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\32x32\\apps\\039C_msys64\\msys2.0.png&quot;
+0134:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\32x32\\apps\\9D72_msys64\\mingw32.0.png&quot;
+013c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\32x32\\apps\\C8FA_msys64\\mingw64.0.png&quot;
+014c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\32x32\\apps\\7A6F_msys64\\ucrt64.0.png&quot;
+0144:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\32x32\\apps\\C8FA_msys64\\mingw64.0.png&quot;
+015c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\48x48\\apps\\039C_msys64\\msys2.0.png&quot;
+012c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\48x48\\apps\\9D72_msys64\\mingw32.0.png&quot;
+0154:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\48x48\\apps\\7A6F_msys64\\ucrt64.0.png&quot;
+0164:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\48x48\\apps\\039C_msys64\\msys2.0.png&quot;
+0134:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\48x48\\apps\\9D72_msys64\\mingw32.0.png&quot;
+013c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\48x48\\apps\\C8FA_msys64\\mingw64.0.png&quot;
+014c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\48x48\\apps\\7A6F_msys64\\ucrt64.0.png&quot;
+0144:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\48x48\\apps\\C8FA_msys64\\mingw64.0.png&quot;
+015c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\64x64\\apps\\039C_msys64\\msys2.0.png&quot;
+012c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\64x64\\apps\\9D72_msys64\\mingw32.0.png&quot;
+0154:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\64x64\\apps\\7A6F_msys64\\ucrt64.0.png&quot;
+0164:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\64x64\\apps\\039C_msys64\\msys2.0.png&quot;
+0134:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\64x64\\apps\\9D72_msys64\\mingw32.0.png&quot;
+013c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\64x64\\apps\\C8FA_msys64\\mingw64.0.png&quot;
+014c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\64x64\\apps\\7A6F_msys64\\ucrt64.0.png&quot;
+0144:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\64x64\\apps\\C8FA_msys64\\mingw64.0.png&quot;
+015c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\96x96\\apps\\039C_msys64\\msys2.0.png&quot;
+012c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\96x96\\apps\\9D72_msys64\\mingw32.0.png&quot;
+0154:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\96x96\\apps\\7A6F_msys64\\ucrt64.0.png&quot;
+0164:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\96x96\\apps\\039C_msys64\\msys2.0.png&quot;
+0134:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\96x96\\apps\\9D72_msys64\\mingw32.0.png&quot;
+013c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\96x96\\apps\\C8FA_msys64\\mingw64.0.png&quot;
+014c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\96x96\\apps\\7A6F_msys64\\ucrt64.0.png&quot;
+0144:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\96x96\\apps\\C8FA_msys64\\mingw64.0.png&quot;
+015c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\256x256\\apps\\039C_msys64\\msys2.0.png&quot;
+015c:err:menubuilder:InvokeShellLinker failed to extract icon from L&quot;C:\\msys64/msys2.exe&quot;
+012c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\256x256\\apps\\9D72_msys64\\mingw32.0.png&quot;
+012c:err:menubuilder:InvokeShellLinker failed to extract icon from L&quot;C:\\msys64/mingw32.exe&quot;
+0154:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\256x256\\apps\\7A6F_msys64\\ucrt64.0.png&quot;
+0154:err:menubuilder:InvokeShellLinker failed to extract icon from L&quot;C:\\msys64/ucrt64.exe&quot;
+0164:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\256x256\\apps\\039C_msys64\\msys2.0.png&quot;
+0164:err:menubuilder:InvokeShellLinker failed to extract icon from L&quot;C:\\msys64/msys2.exe&quot;
+0134:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\256x256\\apps\\9D72_msys64\\mingw32.0.png&quot;
+0134:err:menubuilder:InvokeShellLinker failed to extract icon from L&quot;C:\\msys64/mingw32.exe&quot;
+013c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\256x256\\apps\\C8FA_msys64\\mingw64.0.png&quot;
+013c:err:menubuilder:InvokeShellLinker failed to extract icon from L&quot;C:\\msys64/mingw64.exe&quot;
+014c:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\256x256\\apps\\7A6F_msys64\\ucrt64.0.png&quot;
+014c:err:menubuilder:InvokeShellLinker failed to extract icon from L&quot;C:\\msys64/ucrt64.exe&quot;
+0144:err:menubuilder:convert_to_native_icon error 0x80070003 creating output file L&quot;Z:\\home\\yoo\\.local\\share\\icons\\hicolor\\256x256\\apps\\C8FA_msys64\\mingw64.0.png&quot;
+0144:err:menubuilder:InvokeShellLinker failed to extract icon from L&quot;C:\\msys64/mingw64.exe&quot;
+
+yoo@yoo-ubuntu:~/download$ 
+</code></pre></div><ul><li><p><code>$ cd ~/.wine/drive_c/msys64</code></p></li><li><p><code>$ wine64 start msys2_shell.cmd -mingw64</code></p></li><li><p><code>$ wine64 usr/bin/bash.exe</code></p></li></ul><div class="language-"><pre><code>02c8:fixme:ntdll:NtSetInformationToken unimplemented class 4
+Cygwin WARNING:
+  Couldn&#39;t compute FAST_CWD pointer.  This typically occurs if you&#39;re using
+  an older Cygwin version on a newer Windows.  Please update to the latest
+  available Cygwin version from https://cygwin.com/.  If the problem persists,
+  please see https://cygwin.com/problems.html
+
+02c8:fixme:advapi:LsaOpenPolicy ((null),000000018031B520,0x00000001,00000000FFFFC1B8) stub
+02c8:fixme:security:GetWindowsAccountDomainSid (00000000FFFFC1A0 000000000001DFF8 00000000FFFFC19C): semi-stub
+02c8:fixme:advapi:LsaClose (000000000000CAFE) stub
+02c8:fixme:netapi32:DsEnumerateDomainTrustsW ((null), 0x0023, 0xffffc258, 0xffffc244): stub
+02d8:fixme:wldap32:ldap_set_optionA Unsupported option: 0x95
+02d8:fixme:wldap32:ldap_set_optionA Unsupported option: 0x96
+02c8:fixme:netapi32:NetUserGetInfo Only implemented for local computer, but remote serverL&quot;\\\\@&quot; was requested.
+02c8:fixme:advapi:LsaOpenPolicy ((null),000000018031B520,0x00000800,00000000FFFFC9E8) stub
+02c8:fixme:advapi:LsaClose (000000000000CAFE) stub
+02c8:fixme:netapi32:NetLocalGroupGetInfo ((null) L&quot;Administrators&quot; 1 0xffffc3d0) semi-stub!
+02c8:fixme:netapi32:NetLocalGroupGetInfo ((null) L&quot;Users&quot; 1 0xffffc3d0) semi-stub!
+02d0:fixme:console:console_input_ioctl unsupported ioctl 504088
+</code></pre></div><ul><li><code>$ wine64 usr/bin/pacman.exe</code></li></ul><div class="language-"><pre><code>02e0:fixme:ntdll:NtSetInformationToken unimplemented class 4
+Cygwin WARNING:
+  Couldn&#39;t compute FAST_CWD pointer.  This typically occurs if you&#39;re using
+  an older Cygwin version on a newer Windows.  Please update to the latest
+  available Cygwin version from https://cygwin.com/.  If the problem persists,
+  please see https://cygwin.com/problems.html
+
+02e0:fixme:advapi:LsaOpenPolicy ((null),000000018031B520,0x00000001,00000000FFFFC1B8) stub
+02e0:fixme:security:GetWindowsAccountDomainSid (00000000FFFFC1A0 0000000000015088 00000000FFFFC19C): semi-stub
+02e0:fixme:advapi:LsaClose (000000000000CAFE) stub
+02e0:fixme:netapi32:DsEnumerateDomainTrustsW ((null), 0x0023, 0xffffc258, 0xffffc244): stub
+02f0:fixme:wldap32:ldap_set_optionA Unsupported option: 0x95
+02f0:fixme:wldap32:ldap_set_optionA Unsupported option: 0x96
+02e0:fixme:netapi32:NetUserGetInfo Only implemented for local computer, but remote serverL&quot;\\\\@&quot; was requested.
+02e0:fixme:advapi:LsaOpenPolicy ((null),000000018031B520,0x00000800,00000000FFFFC9E8) stub
+02e0:fixme:advapi:LsaClose (000000000000CAFE) stub
+02e0:fixme:netapi32:NetLocalGroupGetInfo ((null) L&quot;Administrators&quot; 1 0xffffc3d0) semi-stub!
+02e0:fixme:netapi32:NetLocalGroupGetInfo ((null) L&quot;Users&quot; 1 0xffffc3d0) semi-stub!
+02e8:fixme:console:console_input_ioctl unsupported ioctl 504088
+</code></pre></div><h2 id="가능한-해결-방법"><a class="header-anchor" href="#가능한-해결-방법" aria-hidden="true">#</a> 가능한 해결 방법</h2><ul><li>MSYS2를 Chroot Jail에 가둔다 <ul><li>docker는 리소스를 많이 차지</li><li>docker와 달리 kernel뿐만 아니라 호스트의 시스템 라이브러리도 공유</li><li>docker에서는 GUI가 복잡하다.</li></ul></li><li>bash와 pacman등은 호스트의 Linux 바이너리(ELF)를 이용</li></ul><h3 id="msys2-chroot-jail"><a class="header-anchor" href="#msys2-chroot-jail" aria-hidden="true">#</a> MSYS2 Chroot Jail</h3></div></div><footer class="page-footer" data-v-d36a7fda data-v-5a019cc9><div class="edit" data-v-5a019cc9><div class="edit-link" data-v-5a019cc9 data-v-3ae295f1><!----></div></div><div class="updated" data-v-5a019cc9><!----></div></footer><!----><!--[--><!--]--></div></main></div><!----><!--]--></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"index.md\":\"b2ad3b8e\",\"ja_index.md\":\"1e085556\",\"ko_index.md\":\"e5b4c480\",\"win_bridge_server_index.md\":\"62b4cc49\",\"ja_win_bridge_server_index.md\":\"67d5eb67\",\"ko_win_bridge_server_chroot_jail.md\":\"fdeeee7a\",\"ko_win_bridge_server_index.md\":\"1bdf4947\",\"ko_win_bridge_server_msys2.md\":\"630205b4\",\"ko_win_bridge_server_wine.md\":\"062fbac5\"}")</script>
+    <script type="module" async src="/assets/app.b2aa9d0b.js"></script>
+  </body>
+</html>
